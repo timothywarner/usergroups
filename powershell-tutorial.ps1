@@ -69,7 +69,7 @@ ise 'c:\users\tim\desktop\usergroups\TestSQL.rpt'
 # Convert results to CSV
 Invoke-Sqlcmd -InputFile 'C:\Users\Tim\Desktop\usergroups\TestSQL.sql' | Export-Csv -Path 'C:\Users\Tim\Desktop\Usergroups\report.csv' -NoTypeInformation -Force
 
-# Run a stored procedure
+# Run a stored procedure using the .NET data provider
 $SqlConnection = New-Object System.Data.SqlClient.SqlConnection
 $SqlConnection.ConnectionString = "Server=localhost;Database=master;Integrated Security=True"
 $SqlCmd = New-Object System.Data.SqlClient.SqlCommand
@@ -82,11 +82,16 @@ $SqlAdapter.Fill($DataSet)
 $SqlConnection.Close()
 $DataSet.Tables[0]
 
-# 
+# Server Management Objects (SMO)
+Add-Type -AssemblyName 'Microsoft.SqlServer.Smo'
+ $SQLSvr = 'localhost'                            
+ $MySQLObject = New-Object Microsoft.SqlServer.Management.Smo.Server $SQLSvr                             
+ $MyPassword = Get-Credential
 
+ $MySQLObject | Get-Member | Out-GridView -Title 'SMO Methods and Properties'
 
-
-
+ $MySQLObject.Information | Select-Object -Property Parent, Product, Edition, VersionString | Format-Table -AutoSize
+ 
 # Oh, about quotes...
 $w = 'world!'
 Clear-Host
