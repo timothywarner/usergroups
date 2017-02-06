@@ -11,14 +11,26 @@ break
 # Press CTRL+M to expand/collapse regions
 
 # Variable list
-$mySubscription = '150dollar'
+$mySubscription = 'tim-2017'
 $myResourceGroup = 'ARMResourceGroup01'
 $myStorageAccount = 'armstorageaccount01'
 $myLocation = 'SouthCentralUS'
 
 Login-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionName $mySubscription
 Set-AzureRmContext -SubscriptionName $mySubscription
+# Set-AzureRmCurrentStorageAccount -StorageAccountName ''
+
+# Command discovery
+Get-Command -Module AzureRM.* | Measure-Object | Select-Object -Property Count
+
+Get-Module -Name AzureRM.*
+
+Get-Command -Module AzureRM.Compute 
+
+Get-Command -Module AzureRM.Profile -CommandType Alias -ShowCommandInfo
+
+# Security princiapal authentication
+https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authenticate-service-principal
 
 Get-AzureRmLocation | Sort-Object -Property Location | Select-Object -Property Location | Format-Wide -Column 2
 
@@ -29,6 +41,7 @@ New-AzureRmStorageAccount -ResourceGroupName $myResourceGroup -Name $myStorageAc
 Set-AzureRmCurrentStorageAccount -ResourceGroupName $myResourceGroup -AccountName $myStorageAccount
 
 $Keys = Get-AzureRmStorageAccountKey -ResourceGroupName $myResourceGroup -Name $myStorageAccount
+
 $storageContext = New-AzureStorageContext -StorageAccountName $myStorageAccount -StorageAccountKey $Keys[0].Value
 New-AzureStorageContainer -Name 'vhds' -Context $storageContext
 
