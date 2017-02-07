@@ -9,8 +9,37 @@ https://docs.microsoft.com/en-us/azure/
 Azure SDKs and Tools
 https://azure.microsoft.com/en-us/downloads/
 
+Visual Studio Community Edition
+https://www.visualstudio.com/vs/community/
+
+Visual Studio Code + Azure Support
+https://code.visualstudio.com/
+https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-vs-code
+
 Azure Resource Manager Cmdlets
 https://msdn.microsoft.com/en-us/library/mt125356.aspx
+
+Azure Quickstart Templates
+https://azure.microsoft.com/en-us/resources/templates/
+https://github.com/Azure/azure-quickstart-templates
+
+Azure Resource Visualizer
+http://armviz.io/designer
+http://old.armviz.io/
+
+Authoring ARM Templates
+https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates
+https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-template-walkthrough
+
+Pluralsight Video Training - Managing Azure IaaS with PowerShell
+https://www.pluralsight.com/courses/managing-azure-iaas-with-powershell
+
+Pluralsight Video Training - Azure Resource Manager Deep Dive
+https://www.pluralsight.com/courses/azure-resource-manager-deep-dive
+
+
+
+
 
 
 
